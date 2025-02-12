@@ -886,10 +886,16 @@ export const extensionHostConfigDefaults: IExtensionHostLaunchConfiguration = {
   name: 'Debug Extension',
   request: 'launch',
   args: ['--extensionDevelopmentPath=${workspaceFolder}'],
+  env: { VSCODE_EXTENSION_DEVELOPMENT_PATH: '${workspaceFolder}' },
   outFiles: ['${workspaceFolder}/out/**/*.js'],
   resolveSourceMapLocations: ['${workspaceFolder}/**', '!**/node_modules/**'],
   rendererDebugOptions: {},
   runtimeExecutable: '${execPath}',
+  skipFiles: [
+    '<node_internals>/**',
+    '${execInstallFolder}/**',
+    '${workspaceFolder}/**/node_modules/**'
+  ],
   autoAttachChildProcesses: false,
   debugWebviews: false,
   debugWebWorkerHost: false,
